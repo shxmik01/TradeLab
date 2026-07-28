@@ -1,0 +1,235 @@
+/* ==========================================================================
+   Crypto Bot — Trading Terminal theme
+   Loaded once per session by app/dashboard/styles.py via load_css().
+   Targets Streamlit's internal data-testid hooks, so selectors may need
+   small tweaks if a future Streamlit upgrade renames them.
+   ========================================================================== */
+
+:root {
+    color-scheme: dark;
+    --bg-app: #060816;
+    --bg-app-end: #0d1424;
+    --bg-panel: rgba(16, 23, 37, 0.92);
+    --bg-panel-solid: #0e1117;
+    --border-soft: rgba(255, 255, 255, 0.08);
+    --text-primary: #f2f6ff;
+    --text-muted: #8b93a7;
+    --accent: #00c8ff;
+    --accent-soft: rgba(0, 200, 255, 0.25);
+    --up: #00ff88;
+    --down: #ff4b4b;
+    --radius-lg: 18px;
+    --radius-md: 14px;
+}
+
+/* ---- App shell ---------------------------------------------------- */
+
+.stApp {
+    background: linear-gradient(135deg, var(--bg-app) 0%, var(--bg-app-end) 100%);
+    color: var(--text-primary);
+}
+
+div[data-testid="stBlockContainer"] {
+    padding-top: 1.25rem;
+    padding-bottom: 2rem;
+}
+
+h1, h2, h3, h4 {
+    color: #f8fbff;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+}
+
+/* ---- Sidebar -------------------------------------------------------- */
+
+[data-testid="stSidebar"] {
+    background: rgba(8, 12, 24, 0.97);
+    border-right: 1px solid var(--border-soft);
+}
+
+[data-testid="stSidebar"] h1 {
+    font-size: 1.35rem;
+    margin-bottom: 0.25rem;
+}
+
+/* ---- Metric cards ----------------------------------------------------- */
+
+div[data-testid="stMetric"] {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+div[data-testid="stMetric"]:hover {
+    border-color: var(--accent-soft);
+    transform: translateY(-2px);
+}
+
+div[data-testid="stMetricLabel"] {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+div[data-testid="stMetricValue"] {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* ---- Buttons (incl. timeframe selector + watchlist select) ----------- */
+
+.stButton > button {
+    background: linear-gradient(135deg, #182132 0%, #111826 100%);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    color: white;
+    padding: 10px 14px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.stButton > button:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-soft);
+    transform: translateY(-1px);
+}
+
+.stButton > button:active {
+    transform: translateY(0);
+}
+
+/* Active timeframe pill gets a data attribute set by timeframe.py */
+.stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, #0a4d63 0%, #0e2a3a 100%);
+    border-color: var(--accent);
+}
+
+/* ---- Generic "pretty card" wrapper for custom sections ---------------- */
+
+.pretty-container {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+/* ---- Hero banner (Dashboard top) --------------------------------------- */
+
+.hero-banner {
+    text-align: center;
+    padding: 28px 16px 22px;
+    margin-bottom: 18px;
+}
+
+.hero-title {
+    font-size: 2.1rem;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-tagline {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.hero-motto {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+}
+
+.hero-divider {
+    width: 120px;
+    height: 1px;
+    background: var(--border-soft);
+    margin: 16px auto;
+}
+
+.hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-badge {
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--border-soft);
+    background: var(--bg-panel);
+}
+
+.hero-badge-live {
+    color: var(--up);
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+.hero-badge-soon {
+    color: var(--text-muted);
+}
+
+/* ---- Watchlist rows (main panel + sidebar) ------------------------------ */
+
+.watchlist-row {
+    border-radius: 12px;
+    padding: 4px 6px;
+    margin-bottom: 2px;
+    transition: background 0.15s ease;
+}
+
+.watchlist-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.watchlist-row-active {
+    background: rgba(0, 200, 255, 0.08);
+    border: 1px solid var(--accent-soft);
+}
+
+.price-up {
+    color: var(--up);
+    font-weight: 700;
+}
+
+.price-down {
+    color: var(--down);
+    font-weight: 700;
+}
+
+/* ---- Tables / dataframes ------------------------------------------ */
+
+div[data-testid="stDataFrame"] {
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+/* ---- Tabs / radio (page nav) ------------------------------------------ */
+
+div[role="radiogroup"] label {
+    border-radius: 10px;
+    padding: 2px 6px;
+}
+
+/* ---- Responsive tweaks ------------------------------------------------ */
+
+@media (max-width: 900px) {
+    div[data-testid="stMetric"] {
+        padding: 10px 12px;
+    }
+    div[data-testid="stMetricValue"] {
+        font-size: 1.15rem;
+    }
+}
