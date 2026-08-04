@@ -13,7 +13,7 @@ def render_hero() -> None:
     st.markdown(
         """
         <div class="hero-banner">
-            <div class="hero-title">🚀 Shxmik TradeLab</div>
+            <div class="hero-title">🚀 Crypto Bot</div>
             <div class="hero-tagline">Professional Trading Platform</div>
             <div class="hero-motto">Trade &bull; Learn &bull; Analyze &bull; Improve</div>
             <div class="hero-divider"></div>

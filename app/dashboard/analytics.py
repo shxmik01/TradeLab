@@ -136,7 +136,7 @@ def _render_equity_curve(wallet: dict, df: pd.DataFrame) -> None:
         yaxis=dict(side="right", showgrid=True, gridcolor="#20242D", tickprefix="$"),
         xaxis=dict(showgrid=False),
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 
 def _render_trade_distribution(df: pd.DataFrame) -> None:
@@ -156,4 +156,4 @@ def _render_trade_distribution(df: pd.DataFrame) -> None:
         yaxis=dict(side="right", showgrid=True, gridcolor="#20242D", tickprefix="$"),
         xaxis=dict(title="Trade #", showgrid=False),
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")

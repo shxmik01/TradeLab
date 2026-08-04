@@ -15,8 +15,7 @@ app = FastAPI(
 
 Base.metadata.create_all(bind=engine)
 
-wallet = PaperWallet()
-strategy = SMAStrategy()
+from app.core.state import wallet, strategy
 
 @app.get("/")
 def root():

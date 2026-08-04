@@ -83,4 +83,4 @@ def render_chart(symbol: str, interval: str) -> None:
         fig.update_xaxes(showgrid=True, gridcolor="#20242D", row=r, col=1)
         fig.update_yaxes(side="right", showgrid=True, gridcolor="#20242D", row=r, col=1)
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")

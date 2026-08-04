@@ -8,7 +8,7 @@ def show() -> None:
 
     st.markdown(
         """
-        ## 🚀 Shxmik TradeLab
+        ## 🚀 Crypto Bot
 
         *Professional Trading Platform*
 

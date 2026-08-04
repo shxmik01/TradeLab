@@ -20,7 +20,7 @@ def render_timeframe_selector() -> None:
             clicked = st.button(
                 interval,
                 key=f"timeframe_{interval}",
-                use_container_width=True,
+                width="stretch",
                 type="primary" if is_active else "secondary",
             )
             if clicked:

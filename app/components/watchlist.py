@@ -69,7 +69,7 @@ def _render_watchlist_row(symbol: str, assets_dir: Path, prices: dict, active_sy
         st.markdown(_format_change(change), unsafe_allow_html=True)
 
     with cols[4]:
-        if st.button("▶", key=f"watch_{symbol}", use_container_width=False):
+        if st.button("▶", key=f"watch_{symbol}", width="content"):
             st.session_state.symbol = symbol
 
     container.markdown("</div>", unsafe_allow_html=True)

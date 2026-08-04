@@ -51,6 +51,6 @@ def render_positions_table(wallet: dict, prices: dict) -> None:
     """Render the shared positions table, or an empty-state message."""
     df = build_positions_dataframe(wallet, prices)
     if df is not None:
-        st.dataframe(df, use_container_width=True, hide_index=True)
+        st.dataframe(df, width="stretch", hide_index=True)
     else:
         st.info("No open positions.")

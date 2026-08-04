@@ -5,7 +5,7 @@ import streamlit as st
 
 def load_sidebar(prices: dict):
     """Render the main sidebar and return the selected page."""
-    st.sidebar.title("🚀 Shxmik TradeLab")
+    st.sidebar.title("🚀 Crypto Bot")
     st.sidebar.caption("Professional Trading Platform")
     page = st.sidebar.radio(
         "Navigation",

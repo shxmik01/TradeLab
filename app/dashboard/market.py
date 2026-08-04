@@ -94,7 +94,7 @@ def _render_search() -> None:
             label_visibility="collapsed",
         ).strip().upper()
     with col2:
-        search_clicked = st.button("🔍 Search", use_container_width=True)
+        search_clicked = st.button("🔍 Search", width="stretch")
 
     if not (search_clicked and query):
         return

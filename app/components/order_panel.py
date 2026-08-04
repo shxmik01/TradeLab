@@ -10,7 +10,7 @@ def render_order_panel(symbol: str, price: float):
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button("🟢 BUY", use_container_width=True):
+        if st.button("🟢 BUY", width="stretch"):
             r = requests.post(f"{API_URL}/buy/{symbol}")
             if r.ok:
                 st.success(f"Bought {symbol}")
@@ -19,7 +19,7 @@ def render_order_panel(symbol: str, price: float):
                 st.error(r.json().get("detail", "Buy failed"))
 
     with col2:
-        if st.button("🔴 SELL", use_container_width=True):
+        if st.button("🔴 SELL", width="stretch"):
             r = requests.post(f"{API_URL}/sell/{symbol}")
             if r.ok:
                 st.success(f"Sold {symbol}")
