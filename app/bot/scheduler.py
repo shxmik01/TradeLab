@@ -3,8 +3,11 @@ import time
 from datetime import datetime
 
 from app.bot.trader import run_bot
+from app.core.config import get_int
 
-INTERVAL = 60
+# Previous hardcoded scan interval (seconds) — used as the safe fallback
+# when the setting is missing or invalid.
+_DEFAULT_INTERVAL = 60
 
 _running = False
 _thread = None
@@ -25,7 +28,11 @@ def _worker():
         except Exception as exc:
             print(f"[{_timestamp()}] ERROR Scheduler {exc}")
 
-        for _ in range(INTERVAL):
+        # Read the configured scan interval on every tick so setting changes
+        # are picked up naturally at runtime (fallback: previous default 60s).
+        interval = get_int("scan_interval", _DEFAULT_INTERVAL, min_value=5)
+
+        for _ in range(interval):
             if not _running:
                 break
             time.sleep(1)

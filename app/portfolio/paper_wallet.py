@@ -1,3 +1,4 @@
+from app.core.config import get_float, get_int
 from app.services.wallet_service import WalletService
 from app.services.trade_service import TradeService
 from app.services.position_service import PositionService
@@ -14,8 +15,11 @@ class PaperWallet:
         self.initial_balance = self.wallet_service.get_initial_balance()
         self.cash = self.wallet_service.get_cash()
 
-        self.max_positions = 4
-        self.position_size = 250.0
+        # Runtime values read from settings.json once at startup (singleton).
+        # If a setting is missing or invalid, the previous hardcoded value
+        # is used so behavior is always preserved.
+        self.max_positions = get_int("max_open_positions", 4, min_value=1)
+        self.position_size = get_float("order_size", 250.0, min_value=0.0, min_exclusive=True)
 
         self.positions = self.position_service.get_positions()
         self.trade_history = []

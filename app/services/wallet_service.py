@@ -1,3 +1,4 @@
+from app.core.config import get_float
 from app.database.database import SessionLocal
 from app.database.models import Wallet
 
@@ -6,13 +7,20 @@ class WalletService:
     def __init__(self):
         self.db = SessionLocal()
 
+    def _starting_balance(self) -> float:
+        """Read the configured starting balance (fallback: previous default)."""
+        return get_float("starting_balance", 2000.0, min_value=0.0, min_exclusive=True)
+
     def get_wallet(self):
         wallet = self.db.query(Wallet).first()
 
         if wallet is None:
+            # Config-backed value is used ONLY when the wallet row is first
+            # created — an existing wallet's balance is never overwritten.
+            starting = self._starting_balance()
             wallet = Wallet(
-                initial_balance=2000.0,
-                cash=2000.0
+                initial_balance=starting,
+                cash=starting
             )
             self.db.add(wallet)
             self.db.commit()
@@ -33,6 +41,8 @@ class WalletService:
 
     def reset_wallet(self):
         wallet = self.get_wallet()
-        wallet.initial_balance = 2000.0
-        wallet.cash = 2000.0
+        # Explicit reset — re-seeded from the configured starting balance.
+        starting = self._starting_balance()
+        wallet.initial_balance = starting
+        wallet.cash = starting
         self.db.commit()

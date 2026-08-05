@@ -1,0 +1,17 @@
+{
+  "starting_balance": 10000.0,
+  "order_size": 250.0,
+  "max_open_positions": 4,
+  "default_symbol": "BTCUSDT",
+  "default_timeframe": "1h",
+  "scan_interval": 60,
+  "risk_per_trade": 2.0,
+  "stop_loss": 5.0,
+  "take_profit": 10.0,
+  "daily_loss_limit": 500.0,
+  "max_drawdown": 20.0,
+  "auto_start_bot": false,
+  "paper_trading": true,
+  "scanner_auto_refresh": true,
+  "notifications": true
+}

@@ -3,6 +3,8 @@ from __future__ import annotations
 import requests
 import streamlit as st
 
+from app.core.config import SYMBOL_OPTIONS, TIMEFRAME_OPTIONS, get_choice
+
 API = "http://127.0.0.1:8000"
 
 API_ERROR_MESSAGE = "Unable to connect to backend"
@@ -13,12 +15,17 @@ WATCHLIST_SYMBOLS = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "XRPUSDT"]
 
 
 def initialize_session_state() -> None:
-    """Initialize dashboard session defaults once per user session."""
+    """Initialize dashboard session defaults once per user session.
+
+    Defaults come from settings.json (via validated getters, with the
+    previous hardcoded values as fallback) and are read at session start
+    so future setting changes are picked up on the next app run.
+    """
     if "symbol" not in st.session_state:
-        st.session_state.symbol = "BTCUSDT"
+        st.session_state.symbol = get_choice("default_symbol", "BTCUSDT", SYMBOL_OPTIONS)
 
     if "interval" not in st.session_state:
-        st.session_state.interval = "1h"
+        st.session_state.interval = get_choice("default_timeframe", "1h", TIMEFRAME_OPTIONS)
 
 
 @st.cache_data(ttl=10)
