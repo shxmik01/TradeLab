@@ -34,6 +34,7 @@ from app.dashboard.analytics import render_analytics
 from app.dashboard.coming_soon import render_coming_soon
 from app.dashboard.hero import render_hero
 from app.dashboard.market import render_markets
+from app.dashboard.scanner import render_scanner
 from app.dashboard.styles import load_css
 from app.dashboard.topbar import render_topbar
 
@@ -41,7 +42,7 @@ from app.dashboard.topbar import render_topbar
 def configure_page() -> None:
     """Set the page config and load the shared dark theme."""
     st.set_page_config(
-        page_title="Crypto Bot",
+        page_title="Shxmik TradeLab",
         page_icon="🚀",
         layout="wide",
         initial_sidebar_state="expanded",
@@ -103,6 +104,8 @@ def render_dashboard(payload: dict) -> None:
 
     st.divider()
 
+    # 8. TRADE HISTORY — full-width table
+    render_trade_history(wallet)
 
     # 9. AI INSIGHTS — collapsed expander
     st.divider()
@@ -140,6 +143,9 @@ def main() -> None:
 
     elif page == "Markets":
         render_markets(prices)
+
+    elif page == "Scanner":
+        render_scanner()
 
     elif page == "Portfolio":
         render_portfolio(payload["wallet"], prices)

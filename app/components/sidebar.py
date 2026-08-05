@@ -5,13 +5,14 @@ import streamlit as st
 
 def load_sidebar(prices: dict):
     """Render the main sidebar and return the selected page."""
-    st.sidebar.title("🚀 Crypto Bot")
+    st.sidebar.title("🚀 TEST SIDEBAR")
     st.sidebar.caption("Professional Trading Platform")
     page = st.sidebar.radio(
         "Navigation",
         [
             "Dashboard",
             "Markets",
+            "Scanner",
             "Portfolio",
             "Trades",
             "Analytics",
@@ -29,13 +30,12 @@ def load_sidebar(prices: dict):
 _NAV_ICONS = {
     "Dashboard": "🏠 Dashboard",
     "Markets": "📊 Markets",
+    "Scanner": "🔍 Scanner",
     "Portfolio": "💼 Portfolio",
     "Trades": "📜 Trades",
     "Analytics": "📈 Analytics",
     "Settings": "⚙️ Settings",
     "About": "👤 About",
 }
-
-
 def _nav_label(page: str) -> str:
     return _NAV_ICONS.get(page, page)
